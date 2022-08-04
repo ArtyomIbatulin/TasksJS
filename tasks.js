@@ -654,35 +654,35 @@
 // console.log(timeConversionMain("04:59:59PM"));
 // console.timeEnd("timeConversionMain metod");
 
-// function gradingStudents(grades) {
-//   const res = [];
+function gradingStudents(grades) {
+  const res = [];
 
-//   for (let i = 0; i < grades.length; i++) {
-//     let tmp = grades[i];
+  for (let i = 0; i < grades.length; i++) {
+    let tmp = grades[i];
 
-//     while (tmp % 5 !== 0) {
-//       tmp++;
-//     }
+    while (tmp % 5 !== 0) {
+      tmp++;
+    }
 
-//     if (grades[i] < 38) {
-//       res.push(grades[i]);
-//     } else if (tmp - grades[i] < 3) {
-//       res.push(tmp);
-//     } else {
-//       res.push(grades[i]);
-//     }
-//   }
-//   return res;
-// }
+    if (grades[i] < 38) {
+      res.push(grades[i]);
+    } else if (tmp - grades[i] < 3) {
+      res.push(tmp);
+    } else {
+      res.push(grades[i]);
+    }
+  }
+  return res;
+}
 
-// console.log(gradingStudents([73, 67, 38, 33]));
+console.log(gradingStudents([73, 67, 38, 33]));
 
-// function foo(grades) {
-//   return grades.map((grade) =>
-//     grade < 38 || grade % 5 < 3 ? grade : grade + (5 - (grade % 5))
-//   );
-// }
-// console.log(foo([73, 67, 38, 33]));
+function foo(grades) {
+  return grades.map((grade) =>
+    grade < 38 || grade % 5 < 3 ? grade : grade + (5 - (grade % 5))
+  );
+}
+console.log(foo([73, 67, 38, 33]));
 
 let c = (6 / 2) * 3 - ((1 * 3) % 5);
 console.log(c);

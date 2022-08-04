@@ -1361,9 +1361,9 @@ const stat = fs.statSync(fullPath);
   return stat.size
 */
 
-const fs = require('fs'),
-  path = require('path'),
-  fullPath = path.join(__dirname, '', '');
+const fs = require("fs"),
+  path = require("path"),
+  fullPath = path.join(__dirname, "", "");
 // sum = [];
 // let res = 0;
 let tmp = 0;
@@ -1375,7 +1375,7 @@ function getAllSizes(folderName) {
     }
 
     for (let file of files) {
-      fs.stat(folderName + '/' + file, (err, stats) => {
+      fs.stat(folderName + "/" + file, (err, stats) => {
         if (err) {
           throw err;
         }
@@ -1391,14 +1391,14 @@ function getAllSizes(folderName) {
           // console.log(`Общий размер составляет ${tmp} bytes`);
           // return tmp;
         } else {
-          getAllSizes(folderName + '/' + file);
+          getAllSizes(folderName + "/" + file);
         }
       });
     }
   });
 }
 
-getAllSizes('./');
+getAllSizes("./");
 
 setTimeout(() => console.log(`Общий размер составляет ${tmp} bytes`), 1000);
 
@@ -1634,58 +1634,58 @@ setTimeout(() => console.log(`Общий размер составляет ${tmp
 7 6 5
 */
 
-// function matrix(num) {
-//   const arr = [];
-//   for (let i = 0; i < num; i++) {
-//     const items = [];
-//     for (let j = 0; j < num; j++) {
-//       items.push(0);
-//     }
-//     arr.push(items);
-//   }
-//   const spiral = function (arr) {
-//     let count = 1,
-//       k = 0,
-//       m = arr.length,
-//       l = 0,
-//       n = arr[0].length;
+function matrix(num) {
+  const arr = [];
+  for (let i = 0; i < num; i++) {
+    const items = [];
+    for (let j = 0; j < num; j++) {
+      items.push(0);
+    }
+    arr.push(items);
+  }
+  const spiral = function (arr) {
+    let count = 1,
+      k = 0,
+      m = arr.length,
+      l = 0,
+      n = arr[0].length;
 
-//     while (k < m && l < n) {
-//       // слева направо
-//       for (let i = l; i < n; i++) {
-//         arr[k][i] = count;
-//         count++;
-//       }
-//       k++;
+    while (k < m && l < n) {
+      // слева направо
+      for (let i = l; i < n; i++) {
+        arr[k][i] = count;
+        count++;
+      }
+      k++;
 
-//       //  сверху вниз
-//       for (let i = k; i < m; i++) {
-//         arr[i][n - 1] = count;
-//         count++;
-//       }
-//       n--;
+      //  сверху вниз
+      for (let i = k; i < m; i++) {
+        arr[i][n - 1] = count;
+        count++;
+      }
+      n--;
 
-//       // справа налево
-//       if (k < m) {
-//         for (let i = n - 1; i >= l; i--) {
-//           arr[m - 1][i] = count;
-//           count++;
-//         }
-//         m--;
-//       }
+      // справа налево
+      if (k < m) {
+        for (let i = n - 1; i >= l; i--) {
+          arr[m - 1][i] = count;
+          count++;
+        }
+        m--;
+      }
 
-//       // снизу вверх
-//       if (l < n) {
-//         for (let i = m - 1; i >= k; i--) {
-//           arr[i][l] = count;
-//           count++;
-//         }
-//         l++;
-//       }
-//     }
-//     return arr;
-//   };
-//   return spiral(arr);
-// }
+      // снизу вверх
+      if (l < n) {
+        for (let i = m - 1; i >= k; i--) {
+          arr[i][l] = count;
+          count++;
+        }
+        l++;
+      }
+    }
+    return arr;
+  };
+  return spiral(arr);
+}
 
-// console.log(matrix(5));
+console.log(matrix(5));
