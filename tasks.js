@@ -677,9 +677,130 @@
 
 // console.log(gradingStudents([73, 67, 38, 33]));
 
-function foo(grades) {
-  return grades.map((grade) =>
-    grade < 38 || grade % 5 < 3 ? grade : grade + (5 - (grade % 5))
-  );
+// function foo(grades) {
+//   return grades.map((grade) =>
+//     grade < 38 || grade % 5 < 3 ? grade : grade + (5 - (grade % 5))
+//   );
+// }
+// console.log(foo([73, 67, 38, 33]));
+
+// function printNumbers(from, to) {
+//   let current = from;
+
+//   let timerId = setInterval(function () {
+//     console.log(current);
+//     if (current == to) {
+//       clearInterval(timerId);
+//     }
+//     current++;
+//   }, 1000);
+// }
+
+// printNumbers(0, 9);
+
+// function foo() {
+//   let current = 0;
+//   let timer = setInterval(function () {
+//     console.log(current);
+//     if (current === 9) {
+//       clearInterval(timer);
+//     }
+//     current++;
+//   }, 100);
+// }
+// foo();
+
+// function plus(num) {
+//   return this + num;
+// }
+
+// function minus(num) {
+//   return this - num;
+// }
+
+// Number.prototype.plus = plus;
+// Number.prototype.minus = minus;
+
+// console.log((2).plus(3).minus(1));
+
+for (let i = 0; i < 10; i++) {
+  const timer = setInterval(function () {
+    console.log(i);
+    clearInterval(timer);
+  }, 100);
 }
-console.log(foo([73, 67, 38, 33]));
+
+console.log("abc" == new String("abc"));
+
+// const str = "h1h40h";
+// const r = str
+//   .split("h")
+//   .map((s) => s + 10)
+//   .filter((s) => s.length < 4);
+// console.log(r);
+
+// let obj = {
+//   0: 1,
+//   0: 2,
+// };
+// console.log(obj["0"] + obj[0]);
+
+// function foo() {}
+// foo.x = 10;
+// console.log(foo.x);
+
+// var a = "hello";
+// function b() {
+//   console.log(a);
+//   var a = "world";
+//   console.log(a);
+// }
+// b();
+
+// const map = new Map();
+
+// map.set("0", "1");
+// map.set("s2", "2s");
+// map.set("3s", "s3");
+
+// const arr = [...map.values];
+// const r = arr.map((value) => parseInt(value, 10));
+// console.log(r);
+
+// console.log(0 || (1 && 2) || 3);
+
+// var x = 10;
+// function bar(funArg) {
+//   var x = 30;
+//   funArg();
+// }
+
+// function foo() {
+//   console.log(x);
+// }
+
+// foo.x = 20;
+// bar.x = 40;
+// bar(foo);
+
+// for (var i = 0; i < 10; i++) {
+//   setTimeout(function f() {
+//     console.log(i);
+//   });
+// }
+
+// const s1 = ["a", "b", "c"];
+// const s2 = ["d", "e", "f"];
+
+// const r = s1.concat(s2).join("+");
+// console.log(r);
+
+// var obj = {
+//   a: () => {
+//     console.log(this.prop);
+//   },
+//   prop: 1,
+// };
+// obj.a();
+// var fn = obj.a.bind(obj);
+// fn();
