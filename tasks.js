@@ -723,16 +723,25 @@
 
 // console.log((2).plus(3).minus(1));
 
-for (let i = 0; i < 10; i++) {
-  const timer = setInterval(function () {
-    console.log(i);
-    clearInterval(timer);
-  }, 100);
-}
+// for (let i = 0; i < 10; i++) {
+//   const timer = setInterval(function () {
+//     console.log(i);
+//     clearInterval(timer);
+//   }, 100);
+// }
 
-console.log("abc" == new String("abc"));
+// for (var i = 0; i < 10; i++) {
+//   const timer = setInterval(function () {
+//     console.log(i);
+//     clearInterval(timer);
+//   }, 100);
+// }
 
-// const str = "h1h40h";
+// console.log("abc" === new String("abc"));
+// console.log(typeof "abc");
+// console.log(typeof new String("abc"));
+
+// const str = "h2h40h";
 // const r = str
 //   .split("h")
 //   .map((s) => s + 10)
@@ -804,3 +813,29 @@ console.log("abc" == new String("abc"));
 // obj.a();
 // var fn = obj.a.bind(obj);
 // fn();
+
+const a = { name: "Вася" };
+const b = structuredClone(a);
+b.name = "Петя";
+console.log(a.name);
+console.log(b.name);
+
+const perm1 = new Promise((resolve, reject) => {
+  console.log(3);
+  resolve(res);
+});
+perm1.then((res) => console.log(res));
+
+// https://skillbox.ru/media/code/kak-stat-programmistom-v-37/
+
+function test() {
+  let num = 1;
+
+  return function () {
+    console.log(num);
+    num++;
+  };
+}
+
+test()();
+test()();
