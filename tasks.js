@@ -814,28 +814,84 @@
 // var fn = obj.a.bind(obj);
 // fn();
 
-const a = { name: "Вася" };
-const b = structuredClone(a);
-b.name = "Петя";
-console.log(a.name);
-console.log(b.name);
+// const a = { name: "Вася" };
+// const b = structuredClone(a);
+// b.name = "Петя";
+// console.log(a.name);
+// console.log(b.name);
 
-const perm1 = new Promise((resolve, reject) => {
-  console.log(3);
-  resolve(res);
-});
-perm1.then((res) => console.log(res));
+// const perm1 = new Promise((resolve, reject) => {
+//   console.log(3);
+//   resolve(res);
+// });
+// perm1.then((res) => console.log(res));
 
-// https://skillbox.ru/media/code/kak-stat-programmistom-v-37/
+// // https://skillbox.ru/media/code/kak-stat-programmistom-v-37/
 
-function test() {
-  let num = 1;
+// function test() {
+//   let num = 1;
 
-  return function () {
-    console.log(num);
-    num++;
+//   return function () {
+//     console.log(num);
+//     num++;
+//   };
+// }
+
+// test()();
+// test()();
+
+function matrix(num) {
+  const arr = [];
+  for (let i = 0; i < num; i++) {
+    const items = [];
+    for (let j = 0; j < num; j++) {
+      items.push(0);
+    }
+    arr.push(items);
+  }
+  const spiral = function (arr) {
+    let count = 1,
+      k = 0,
+      m = arr.length,
+      l = 0,
+      n = arr[0].length;
+
+    while (k < m && l < n) {
+      // слева направо
+      for (let i = l; i < n; i++) {
+        arr[k][i] = count;
+        count++;
+      }
+      k++;
+
+      //  сверху вниз
+      for (let i = k; i < m; i++) {
+        arr[i][n - 1] = count;
+        count++;
+      }
+      n--;
+
+      // справа налево
+      if (k < m) {
+        for (let i = n - 1; i >= l; i--) {
+          arr[m - 1][i] = count;
+          count++;
+        }
+        m--;
+      }
+
+      // снизу вверх
+      if (l < n) {
+        for (let i = m - 1; i >= k; i--) {
+          arr[i][l] = count;
+          count++;
+        }
+        l++;
+      }
+    }
+    return arr;
   };
+  return spiral(arr);
 }
 
-test()();
-test()();
+console.log(matrix(5));
