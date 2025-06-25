@@ -840,58 +840,20 @@
 // test()();
 // test()();
 
-function matrix(num) {
-  const arr = [];
-  for (let i = 0; i < num; i++) {
-    const items = [];
-    for (let j = 0; j < num; j++) {
-      items.push(0);
+// Определить сколько раз каждый элемент встречается в массиве.
+const fruits = ["kiwi", "apple", "kiwi", "orange", "kiwi", "apple"];
+
+const countItems = (list) => {
+  const count = {};
+  list.forEach((f) => {
+    if (!count[f]) {
+      count[f] = 1;
+    } else {
+      count[f]++;
     }
-    arr.push(items);
-  }
-  const spiral = function (arr) {
-    let count = 1,
-      k = 0,
-      m = arr.length,
-      l = 0,
-      n = arr[0].length;
+  });
+  return count;
+};
 
-    while (k < m && l < n) {
-      // слева направо
-      for (let i = l; i < n; i++) {
-        arr[k][i] = count;
-        count++;
-      }
-      k++;
-
-      //  сверху вниз
-      for (let i = k; i < m; i++) {
-        arr[i][n - 1] = count;
-        count++;
-      }
-      n--;
-
-      // справа налево
-      if (k < m) {
-        for (let i = n - 1; i >= l; i--) {
-          arr[m - 1][i] = count;
-          count++;
-        }
-        m--;
-      }
-
-      // снизу вверх
-      if (l < n) {
-        for (let i = m - 1; i >= k; i--) {
-          arr[i][l] = count;
-          count++;
-        }
-        l++;
-      }
-    }
-    return arr;
-  };
-  return spiral(arr);
-}
-
-console.log(matrix(5));
+const countResult = countItems(fruits);
+console.log(countResult);
