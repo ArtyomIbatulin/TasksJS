@@ -857,3 +857,121 @@ const countItems = (list) => {
 
 const countResult = countItems(fruits);
 console.log(countResult);
+
+// Требуется создать функцию, получающую на вход число
+// от 0 до 100 000 и показывающее его текстовый эквивалент.
+//   Например: 441 => четыреста сорок один
+
+let strNum = {
+  unit: [
+    "",
+    "один",
+    "два",
+    "три",
+    "четыре",
+    "пять",
+    "шесть",
+    "семь",
+    "восемь",
+    "девять",
+  ],
+  ten: [
+    "",
+    "",
+    "двадцать",
+    "тридцать",
+    "сорок",
+    "пятьдесят",
+    "шестьдесят",
+    "семьдесят",
+    "восемьдесят",
+    "девяносто",
+  ],
+  teen: [
+    "десять",
+    "одинадцать",
+    "двенадцать",
+    "тринадцать",
+    "четырнадцать",
+    "пятнадцать",
+    "шестнадцать",
+    "семнадцать",
+    "восемнадцать",
+    "девятнадцать",
+  ],
+  hundred: [
+    "",
+    "сто",
+    "двести",
+    "триста",
+    "четыреста",
+    "пятьсот",
+    "шестьсот",
+    "семьсот",
+    "восемьсот",
+    "девятьсот",
+  ],
+  thousand: ["тысячи ", "тысяч "],
+};
+function calcXX(numXX = 0, numX) {
+  if (!numXX && !numX) {
+    return "";
+  }
+  switch (numXX) {
+    case 0:
+      return strNum.unit[numX];
+    case 1:
+      return strNum.teen[numX];
+    default:
+      return strNum.ten[numXX] + " " + strNum.unit[numX];
+  }
+}
+function toThousand(numX, finalString) {
+  switch (numX) {
+    case 1:
+      return finalString.replace("один ", "одна тысяча ");
+    case 2:
+      finalString = finalString.replace("два ", "две ");
+    case 3:
+    case 4:
+      return (finalString += strNum.thousand[0]);
+    default:
+      return (finalString += strNum.thousand[1]);
+  }
+}
+function numberToString(num) {
+  if (+num >= 100000 || isNaN(+num)) {
+    return false;
+  }
+  let numArray = num.toString().padStart(5, ".").split("");
+  let finalString = "";
+  if (numArray[0] != ".") {
+    finalString += calcXX(+numArray[0], +numArray[1]) + " ";
+  } else if (numArray[1] != ".") {
+    finalString += calcXX(undefined, +numArray[1]) + " ";
+  }
+
+  if (numArray[2] != ".") {
+    if (numArray[1] != ".") {
+      if (numArray[0] != "1") {
+        finalString = toThousand(+numArray[1], finalString);
+      } else {
+        finalString += strNum.thousand[1];
+      }
+    }
+    finalString = finalString + strNum.hundred[+numArray[2]] + " ";
+  }
+  if (numArray[3] != ".") {
+    finalString += calcXX(+numArray[3], +numArray[4]) + " ";
+  } else if (numArray[4] != ".") {
+    finalString += calcXX(undefined, +numArray[4]) + " ";
+  }
+  return finalString;
+}
+
+setInterval(() => {
+  let rng = Math.floor(Math.random() * 100000);
+  console.log(rng);
+  console.log(numberToString(+rng));
+  console.log("______________________");
+}, 5000);
