@@ -975,3 +975,58 @@ setInterval(() => {
   console.log(numberToString(+rng));
   console.log("______________________");
 }, 5000);
+
+/* 
+Реализовать собственные версии методов map, filter, reduce не используя аналогичные методы
+из объекта типа Array (можно использовать только for, while и do while).
+Интерфейс функции map:
+map(array: array<T>, callback: (item: T) => T): array<T>
+Пример использования:
+map([1,2,3], (item) => item + 1)
+Ответ: [2, 3, 4]
+Входной массив мутироваться (изменяться) не должен.
+Прочие функции должны работать аналогично map с поправкой на их назначение.
+*/
+
+const arr = [1, 2, 3, -1, -2, -3, 0, 5, 6, 7];
+
+map;
+const map = function (arr, callback, thisArg) {
+  let results = [];
+  for (let i = 0; i < arr.length; i++) {
+    results.push(callback.call(thisArg, arr[i], i, arr));
+  }
+  return results;
+};
+
+var toMap = map(arr, (item) => item + 1);
+
+console.log(toMap);
+
+filter;
+const filter = function (arr, callback, thisArg) {
+  let results = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (callback.call(thisArg, arr[i], i, arr)) {
+      results.push(arr[i]);
+    }
+  }
+  return results;
+};
+
+const toFilter = filter(arr, (item) => item > 5);
+
+console.log(toFilter);
+
+reduce;
+const reduce = function (arr, callback, startValue) {
+  let result = startValue;
+  for (let i = 0; i < arr.length; i++) {
+    result = callback.call(null, result, arr[i], i, arr);
+  }
+  return result;
+};
+
+const toReduce = reduce(arr, (acc, cur) => acc + cur, 0);
+
+console.log(toReduce);
