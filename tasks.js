@@ -1030,3 +1030,101 @@ const reduce = function (arr, callback, startValue) {
 const toReduce = reduce(arr, (acc, cur) => acc + cur, 0);
 
 console.log(toReduce);
+
+function auto(sum, arr) {
+  console.log(arr);
+  arr.sort((a, b) => b - a);
+  let result = arr.reduce((summ, current) => summ + current, 0);
+  const cur = result - sum;
+  const coins = [];
+  const odd = [];
+  let dif = sum;
+  console.log(arr);
+  console.log("Сумма" + " " + sum);
+  console.log("Количество денег" + " " + result);
+  console.log("Сдача с суммы" + " " + cur);
+  if (sum <= result) {
+    arr.forEach((val) => {
+      if (result > cur && dif >= val) {
+        coins.push(val);
+        result -= val;
+        dif -= val;
+      } else {
+        odd.push(val);
+      }
+    });
+    console.log("Потребовавшиеся монеты:" + " " + coins);
+    console.log("Сдача" + " " + odd);
+  } else {
+    console.log("Денег не хватает");
+    console.log("Потребовавшиеся монеты:" + " " + coins);
+    console.log("Сдача" + " " + arr);
+  }
+}
+// const output = auto(39, [1, 2, 5, 10, 10, 5, 2, 2, 5, 1, 1, 1]);
+
+function auto(sum, arr) {
+  console.log(arr);
+  arr.sort((a, b) => b - a);
+  let result = arr.reduce((summ, current) => summ + current, 0);
+  let cur = result - sum;
+  let coins = [];
+  let odd = [];
+  let dif = sum;
+
+  console.log(arr);
+  console.log("Сумма" + " " + sum);
+  console.log("Количество денег" + " " + result);
+  console.log("Сдача с суммы" + " " + cur);
+
+  // if (sum > result) {
+  //   console.log('Денег не хватает');
+  //   alert('Денег не хватает');
+  // } else {
+  //   for (let i = 0; i < arr.length; i++) {
+  //     let val = arr[i];
+
+  //     if (result > cur && dif >= val) {
+  //       arr.splice(i, 1);
+  //       coins.push(val);
+  //       result -= val;
+  //       dif -= val;
+  //       i--;
+  //     }
+  //   }
+  // }
+
+  if (sum <= result) {
+    arr.forEach((val) => {
+      if (result > cur && dif >= val) {
+        coins.push(val);
+        result -= val;
+        dif -= val;
+      } else {
+        odd.push(val);
+      }
+    });
+  } else {
+    console.log("Денег не хватает");
+    // alert('Денег не хватает');
+  }
+
+  console.log("Потребовавшиеся монеты:" + " " + coins);
+  // console.log('Сдача:' + ' ' + arr);
+
+  sum <= result
+    ? console.log("Сдача:" + " " + odd)
+    : console.log("Сдача:" + " " + arr);
+
+  // return [coins, odd];
+}
+
+let output = auto(19, [1, 2, 5, 10, 10, 5, 2, 2, 5, 1, 1, 1]);
+alert("Потребовавшиеся монеты:" + " " + output[0]);
+alert("Сдача:" + " " + output[1]);
+
+let urls = [
+  "https://api.github.com/users/iliakan",
+  "https://api.github.com/users/remy",
+  "https://no-such-url",
+];
